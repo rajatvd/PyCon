@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Generators slides</title>
+<title>GeneratorsExplained slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -12942,18 +12942,18 @@ variable = what was sent</code></pre>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">RunningAvg</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running_sum</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="o">=</span><span class="mi">0</span>
         
     <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running_sum</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="o">=</span><span class="mi">0</span>
         
     <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">+=</span><span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running_sum</span><span class="o">+=</span><span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
         
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_sum</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span>
 </pre></div>
 
 </div>
@@ -13011,11 +13011,11 @@ variable = what was sent</code></pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">averager</span><span class="p">():</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="k">yield</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">running_sum</span> <span class="o">=</span> <span class="k">yield</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">s</span> <span class="o">+=</span> <span class="k">yield</span> <span class="n">s</span><span class="o">/</span><span class="n">n</span>
-        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">running_sum</span> <span class="o">+=</span> <span class="k">yield</span> <span class="n">running_sum</span><span class="o">/</span><span class="n">count</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
 </div>
@@ -13140,30 +13140,30 @@ test(u)
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Stacking-generators">Stacking generators<a class="anchor-link" href="#Stacking-generators">&#182;</a></h1><p>Suppose we had a generator which yields values another generator. An example of this is shown below</p>
+<h1 id="Stacking-generators">Stacking generators<a class="anchor-link" href="#Stacking-generators">&#182;</a></h1><p>We can have generators which yield elements from another generator.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">gen1</span><span class="p">():</span>
-    <span class="k">yield</span> <span class="s1">&#39;a&#39;</span>
-    <span class="k">yield</span> <span class="s1">&#39;b&#39;</span>
-    <span class="k">yield</span> <span class="s1">&#39;c&#39;</span>
+    <span class="k">yield</span> <span class="s1">&#39;gen1 a&#39;</span>
+    <span class="k">yield</span> <span class="s1">&#39;gen1 b&#39;</span>
+    <span class="k">yield</span> <span class="s1">&#39;gen1 c&#39;</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div><div class="fragment">
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">gen2</span><span class="p">():</span>
@@ -13178,9 +13178,18 @@ test(u)
 </div>
 
 </div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>gen2</code> object yields elements frmo both generators sequentially</p>
+
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gen2</span><span class="p">():</span>
@@ -13201,9 +13210,9 @@ test(u)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>a
-b
-c
+<pre>gen1 a
+gen1 b
+gen1 c
 d
 e
 </pre>
@@ -13213,7 +13222,7 @@ e
 </div>
 </div>
 
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13225,7 +13234,7 @@ e
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">gen3</span><span class="p">():</span>
@@ -13241,7 +13250,7 @@ e
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gen3</span><span class="p">():</span>
@@ -13262,9 +13271,9 @@ e
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>a
-b
-c
+<pre>gen1 a
+gen1 b
+gen1 c
 d
 e
 </pre>
@@ -13347,6 +13356,15 @@ e
 </div>
 </div>
 
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="binary_tree.png" alt="binary tree"></p>
+
+</div>
+</div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -13833,7 +13851,8 @@ But, most of the processing is done only on small batches at a time. This means 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Final-Remarks">Final Remarks<a class="anchor-link" href="#Final-Remarks">&#182;</a></h1><p>There is much more to generators and <code>yield</code> than what I have covered in this talk!</p>
-<p>The whole concept of <strong>asyncio</strong> and the <code>async</code> and <code>await</code> python keywords are a form of concurrency, at the heart of which lies the power of the <code>yield</code> statement. If you're interested, look up stuff on asyncio and generators to get a grasp of what <code>yield</code> can really do!</p>
+<p>Generators are at the heart of asynchronous concurrency in python, and the <code>yield</code> statement plays a crucial role in the implementation of <strong>asyncio</strong> and the <code>async</code> and <code>await</code> python keywords.</p>
+<p>If you're interested, look up stuff on asyncio and generators to get a grasp of what <code>yield</code> can really do! I recommend starting with this <a href="https://www.youtube.com/watch?v=MCs5OvhV9S4">video</a></p>
 
 </div>
 </div>
