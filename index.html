@@ -13587,11 +13587,39 @@ e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>One of the most common use cases of generators in practice is in loading data for training machine learning algorithms. When training an algorithm on a huge dataset like ImageNet, which has more than 10 million images, it's impossible to load the whole dataset into your local RAM. This is the perfect place to use a generator to load images as and when they are rqeuired for training. I'll demo a brief examples of loading the MNIST dataset, which is a dataset containing handwritten digits using the pytorch <code>DataLoader</code> class.</p>
+<p>Almost all machine learning and deep learning methods require data.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A LOT of data.<br>
+But, most of the processing is done only on small batches at a time. This means we don't need to load the whole dataset into our RAM and consume huge amounts of memory.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A perfect place to use generators!</p>
 
 </div>
 </div>
 </div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An example using pytorch. The <code>DataLoader</code> class allows us to make <code>iterators</code>, which for all practical purposes is basically the same as a generator. One of the differences between the two is that you can only call <code>next</code> on iterators, and can't call <code>.send</code>.</p>
+
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[60]:</div>
@@ -13604,7 +13632,7 @@ e
 </div>
 </div>
 
-</div><div class="fragment">
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[61]:</div>
@@ -13622,7 +13650,7 @@ e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To get an iterator from the DataLoader object, we use the <code>iter</code> keyword. Note that iterators are slightly different from generators, but are essentially the same for most practical purposes. This means that you can still call <code>next</code> on them to yield the next value, you can embed them in for loops, etc.</p>
+<p>To get an iterator from the DataLoader object, we use the <code>iter</code> keyword.</p>
 
 </div>
 </div>
@@ -13809,7 +13837,7 @@ e
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
