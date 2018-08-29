@@ -8,7 +8,8 @@
 ---
 @ul
 
-- |```
+- 
+```
 def squares(n):
     i = 1  
     out = []  
@@ -16,11 +17,12 @@ def squares(n):
         out.append(i**2)  
         i+=1  
     return out  
-```|
+```
 
-- |```
+-
+```
 squares(10)
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-```|
+```
 @ulend
 
