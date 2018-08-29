@@ -6,7 +6,7 @@
 * Let's say we want the squares of natural numbers.
 @ulend
 ---
-|```
+```
 def squares(n):
     i = 1  
     out = []  
@@ -16,7 +16,7 @@ def squares(n):
     return out  
 ```|
 
-|```
+```
 squares(10)
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```|
