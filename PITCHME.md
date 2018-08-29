@@ -6,7 +6,7 @@
 * Let's say we want the squares of natural numbers.
 @ulend
 ---
-<li class="fragment">
+<div class="fragment">
 ```
 def squares(n):
     i = 1  
@@ -14,14 +14,11 @@ def squares(n):
     while i<=n:  
         out.append(i**2)  
         i+=1  
-    return out  
-```
-</li>
+    return out 
 
-<li class="fragment">
-
-```
 squares(10)
-[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
 ```
-</li>
+</div>
