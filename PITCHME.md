@@ -18,7 +18,7 @@ def squares(n):
 @[1](test 1)
 @[2,3](test 2,3)
 
-<div class="fragment code">
+<code class="fragment">
 squares(10)
 output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-</div>
+</code>
