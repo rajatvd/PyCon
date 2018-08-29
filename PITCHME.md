@@ -6,7 +6,6 @@
 * Let's say we want the squares of natural numbers.
 @ulend
 ---
-<div class="fragment">
 ```
 def squares(n):
     i = 1  
@@ -17,8 +16,8 @@ def squares(n):
     return out 
 
 squares(10)
-
-output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-
 ```
+
+<div class="fragment">
+`output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]`
 </div>
