@@ -13570,7 +13570,7 @@ e
     yield i
 
 </code></pre>
-<p>However, it has some more subtleties which will get into later.</p>
+<p>However, it has some more subtleties which we will get into later.</p>
 
 </div>
 </div>
@@ -13656,11 +13656,11 @@ e
 <div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inorder_loop</span><span class="p">(</span><span class="n">btree</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inorder_list</span><span class="p">(</span><span class="n">btree</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">btree</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[]</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="n">inorder_loop</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="n">inorder_loop</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">inorder_list</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">inorder_list</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">left</span> <span class="o">+</span> <span class="p">[</span><span class="n">btree</span><span class="o">.</span><span class="n">dat</span><span class="p">]</span> <span class="o">+</span> <span class="n">right</span>
 </pre></div>
 
@@ -13674,7 +13674,7 @@ e
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inorder_loop</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inorder_list</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13716,11 +13716,11 @@ e
 <div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preorder_loop</span><span class="p">(</span><span class="n">btree</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preorder_list</span><span class="p">(</span><span class="n">btree</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">btree</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[]</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="n">preorder_loop</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="n">preorder_loop</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">preorder_list</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">preorder_list</span><span class="p">(</span><span class="n">btree</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">btree</span><span class="o">.</span><span class="n">dat</span><span class="p">]</span> <span class="o">+</span> <span class="n">left</span>  <span class="o">+</span> <span class="n">right</span>
 </pre></div>
 
@@ -13734,7 +13734,7 @@ e
 <div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">preorder_loop</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">preorder_list</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13899,7 +13899,7 @@ e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The above example showed that <code>yield from</code> expands generators within other generators and allows us to stack them. However, the <code>yield from</code> statement is much more that just a for loop:</p>
+<p>The above example showed that <code>yield from</code> expands generators within other generators and allows us to stack them. However, the <code>yield from</code> statement is much more that just a for loop.</p>
 
 </div>
 </div>
