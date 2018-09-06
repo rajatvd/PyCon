@@ -16,7 +16,7 @@
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -11905,9 +11905,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Generators-Explained">Generators Explained<a class="anchor-link" href="#Generators-Explained">&#182;</a></h1><p><em>Rajat Vadiraj Dwaraknath</em></p>
-<h2 id="Target-audience">Target audience<a class="anchor-link" href="#Target-audience">&#182;</a></h2><p>Beginners who are familiar with the basics of python. Exposure to basic concepts like iteration using for loops and while loops are required. Knowledge of classes will help.</p>
-<h2 id="Objective">Objective<a class="anchor-link" href="#Objective">&#182;</a></h2><p>To gain a conceptual understanding of how python generators work, and how to use them to make your code more efficient and sleek.</p>
+<h1 id="Generators-Explained">Generators Explained<a class="anchor-link" href="#Generators-Explained">&#182;</a></h1><p><em>Yielding from iteration to concurrency</em></p>
+<p>Rajat Vadiraj Dwaraknath</p>
 
 </div>
 </div>
@@ -11917,12 +11916,28 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Iteration">Iteration<a class="anchor-link" href="#Iteration">&#182;</a></h1><p>Iteration is a type of control flow in which a set of statements are repeated.</p>
-<p>We implement iteration using <em>loops</em>.</p>
-<p>Let's say we want the squares of natural numbers. We could do something like:</p>
 
 </div>
 </div>
 </div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We implement iteration using <em>loops</em>.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's say we want the squares of natural numbers. We could do something like:</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[67]:</div>
@@ -12597,6 +12612,267 @@ while True:
 49
 64
 81
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example---Data-Loading-in-Machine-Learning">Example - Data Loading in Machine Learning<a class="anchor-link" href="#Example---Data-Loading-in-Machine-Learning">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Almost all machine learning and deep learning methods require data.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A LOT of data.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But, most of the processing is done only on small batches at a time. This means we don't need to load the whole dataset into our RAM and consume huge amounts of memory.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A perfect place to use generators!</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An example using pytorch. The <code>DataLoader</code> class allows us to make <code>iterators</code>, which for all practical purposes is basically the same as a generator.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_dataset</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="s1">&#39;Z:/MNIST&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ToTensor</span><span class="p">())</span> <span class="c1"># this downloads the dataset</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_loader</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_dataset</span><span class="p">)</span> <span class="c1"># this creates a data loader object</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To get an iterator from the DataLoader object, we use the <code>iter</code> keyword.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">mnist_loader</span><span class="p">)</span>
+<span class="n">mnist_iterator</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[62]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;torch.utils.data.dataloader._DataLoaderIter at 0x2781808ee48&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This iterators yields batches of images from the dataset. In this case, I'm using a batch size of 1. Let's get a batch and look at the first image in it.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">mnist_iterator</span><span class="p">)</span>
+<span class="n">images</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[63]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.Size([1, 1, 28, 28])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+<span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Label: </span><span class="si">{labels[0]}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Label: 5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, if we wish to loop over all the batches in our dataset, we can simply do the following:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">mnist_loader</span><span class="p">:</span>
+    
+    <span class="c1"># do some training logic</span>
+    
+    <span class="c1"># counting batches to demonstrate that the iterator works</span>
+    <span class="n">batch_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Total of </span><span class="si">{batch_count}</span><span class="s2"> batches with a batch size of </span><span class="si">{images.shape[0]}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total of 60000 batches with a batch size of 1
 </pre>
 </div>
 </div>
@@ -13294,7 +13570,7 @@ e
     yield i
 
 </code></pre>
-<p>However, it has some more subtleties which will not be discussed here.</p>
+<p>However, it has some more subtleties which will get into later.</p>
 
 </div>
 </div>
@@ -13615,7 +13891,7 @@ e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Data-loading-in-Machine-Learning">Data loading in Machine Learning<a class="anchor-link" href="#Data-loading-in-Machine-Learning">&#182;</a></h1>
+<h1 id="Digging-deeper-into-yield-from">Digging deeper into yield from<a class="anchor-link" href="#Digging-deeper-into-yield-from">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -13623,7 +13899,7 @@ e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Almost all machine learning and deep learning methods require data.</p>
+<p>The above example showed that <code>yield from</code> expands generators within other generators and allows us to stack them. However, the <code>yield from</code> statement is much more that just a for loop:</p>
 
 </div>
 </div>
@@ -13632,8 +13908,9 @@ e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A LOT of data.<br>
-But, most of the processing is done only on small batches at a time. This means we don't need to load the whole dataset into our RAM and consume huge amounts of memory.</p>
+<ul>
+<li>The for loop expansion doesn't work if we send values into the nested generator, but <code>yield from</code> takes care of that</li>
+</ul>
 
 </div>
 </div>
@@ -13642,7 +13919,9 @@ But, most of the processing is done only on small batches at a time. This means 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A perfect place to use generators!</p>
+<ul>
+<li>Putting things on the left hand side of <code>yield from</code> works differently from just a <code>yield</code>. This functionality is what lies at the heart of <em>asynchronous concurrency</em> in python.</li>
+</ul>
 
 </div>
 </div>
@@ -13651,86 +13930,51 @@ But, most of the processing is done only on small batches at a time. This means 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>An example using pytorch. The <code>DataLoader</code> class allows us to make <code>iterators</code>, which for all practical purposes is basically the same as a generator. One of the differences between the two is that you can only call <code>next</code> on iterators, and can't call <code>.send</code>.</p>
-
+<h1 id="Coroutines">Coroutines<a class="anchor-link" href="#Coroutines">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_dataset</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="s1">&#39;Z:/MNIST&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ToTensor</span><span class="p">())</span> <span class="c1"># this downloads the dataset</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We noted earlier that generators are like 'stateful' functions, whose execution can be 'paused' at <code>yield</code> statements.</p>
 
 </div>
 </div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_loader</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_dataset</span><span class="p">)</span> <span class="c1"># this creates a data loader object</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To get an iterator from the DataLoader object, we use the <code>iter</code> keyword.</p>
+<p>These characteristics are exactly those of a <em>coroutine</em> - the basic unit in async control flow.</p>
 
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">mnist_loader</span><span class="p">)</span>
-<span class="n">mnist_iterator</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Broadly, coroutines are functions that transfer control between each other, while maintaining their local namespace and state.</p>
 
 </div>
 </div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[62]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;torch.utils.data.dataloader._DataLoaderIter at 0x2781808ee48&gt;</pre>
-</div>
-
-</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The benefit of having such a block is that a coroutine for reading or writing (I/O) can send control to some other coroutine while waiting for results from the I/O operation. This minimizes idle time of the CPU.</p>
 
 </div>
 </div>
-
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This iterators yields batches of images from the dataset. In this case, I'm using a batch size of 1. Let's get a batch and look at the first image in it.</p>
-
+<h1 id="An-example">An example<a class="anchor-link" href="#An-example">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -13739,106 +13983,107 @@ But, most of the processing is done only on small batches at a time. This means 
 <div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">mnist_iterator</span><span class="p">)</span>
-<span class="n">images</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sum_n</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{name}</span><span class="s2"> s = </span><span class="si">{s}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">yield</span>
+    
+    <span class="k">return</span> <span class="n">s</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[63]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>torch.Size([1, 1, 28, 28])</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This 'coroutine' finds the sum of natural numbers until the given number, in reverse order. It has a <code>yield</code> after each step in the loop, so that it can be paused. Notice that it also <strong>returns</strong> the sum at the end.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
-<span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Label: </span><span class="si">{labels[0]}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_result</span><span class="p">(</span><span class="n">coroutine</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">coroutine</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result = </span><span class="si">{result}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-
-</div>
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Label: 5
-</pre>
-</div>
-</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This one just prints the result from another coroutine. Notice how <code>yield from</code> is used on the right hand side of an assignment. The value of <code>result</code> equals whatever the <code>coroutine</code> <em>returns</em>.</p>
 
 </div>
 </div>
-
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, if we wish to loop over all the batches in our dataset, we can simply do the following:</p>
+<p>Now, we can execute multiple coroutines concurrently using an <em>event loop</em>. I'm going to show a basic version of an event loop which just executes tasks using a round robin schedule.</p>
 
 </div>
 </div>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">mnist_loader</span><span class="p">:</span>
-    
-    <span class="c1"># do some training logic</span>
-    
-    <span class="c1"># counting batches to demonstrate that the iterator works</span>
-    <span class="n">batch_count</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Total of </span><span class="si">{batch_count}</span><span class="s2"> batches with a batch size of </span><span class="si">{images.shape[0]}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run the list of tasks until completion&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">tasks</span><span class="p">:</span>
+        <span class="n">to_run</span> <span class="o">=</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># get the first task in the list</span>
+        
+        <span class="k">try</span><span class="p">:</span> <span class="c1"># try to run it</span>
+            <span class="nb">next</span><span class="p">(</span><span class="n">to_run</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># if stop iteration is raised, that means that the task is complete</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Completed task&#39;</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># remove it from the task queue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># if it isn&#39;t raised, move it to the end of the queue</span>
+            <span class="k">del</span> <span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">to_run</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's use this basic event loop to run two of the sum coroutines concurrently. We'll wrap the sum coroutines using the <code>print_result</code> coroutine as well.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">run</span><span class="p">([</span><span class="n">print_result</span><span class="p">(</span><span class="n">sum_n</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">)),</span> 
+     <span class="n">print_result</span><span class="p">(</span><span class="n">sum_n</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">))])</span>
 </pre></div>
 
 </div>
@@ -13855,7 +14100,18 @@ But, most of the processing is done only on small batches at a time. This means 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total of 60000 batches with a batch size of 1
+<pre>three s = 3
+five s = 5
+three s = 5
+five s = 9
+three s = 6
+five s = 12
+6
+Completed task
+five s = 14
+five s = 15
+15
+Completed task
 </pre>
 </div>
 </div>
@@ -13863,23 +14119,61 @@ But, most of the processing is done only on small batches at a time. This means 
 </div>
 </div>
 
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can see that the two coroutines are executed alternatingly, and not one after the other. This is the essence of async concurrency.</p>
+
+</div>
+</div>
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Final-Remarks">Final Remarks<a class="anchor-link" href="#Final-Remarks">&#182;</a></h1><p>There is much more to generators and <code>yield</code> than what I have covered in this talk!</p>
-<p>Generators are at the heart of asynchronous concurrency in python, and the <code>yield</code> statement plays a crucial role in the implementation of <strong>asyncio</strong> and the <code>async</code> and <code>await</code> python keywords.</p>
-<p>If you're interested, look up stuff on asyncio and generators to get a grasp of what <code>yield</code> can really do! I recommend starting with this <a href="https://www.youtube.com/watch?v=MCs5OvhV9S4">video</a></p>
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>We started off by reformulating iteration using <code>yield</code> - it was a pretty cool way to solve some memory issues, but the <code>yield</code> keyword seemed like just a synctactic trick to make our life easier.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-End">The End<a class="anchor-link" href="#The-End">&#182;</a></h1>
+<p>By digging deeper into stacking generators and using <code>yield from</code>, we saw that the basic ability to pause function execution and maintain state was the main power of the <code>yield</code> keyword, and that that formed the heart of asynchronous concurrency.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In python 3.5+ the keywords <code>async</code> and <code>await</code> can be used to explicitly define coroutines. They work using the same principles as the <code>yield from</code> statement.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you're interested, look up stuff on asyncio and the event loop to get a deeper understanding of this part of python! I recommend starting with this <a href="https://www.youtube.com/watch?v=MCs5OvhV9S4">video</a>.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thanks-for-Listening">Thanks for Listening<a class="anchor-link" href="#Thanks-for-Listening">&#182;</a></h1><p>You can find the code for this talk on my <a href="https://github.com/rajatvd">github</a>. I've included an example using <code>async</code> and <code>await</code> in the code as well, which can be appreciated only when it is run live.</p>
+<p>I've hosted the slides for this talk on my <a href="https://rajatvd.github.io/">blog</a> <a href="https://rajatvd.github.io/PySangamam/">here</a>.</p>
+<p>I've put up a bunch of projects on there as well, mainly related to deep learning and math in general.</p>
+<p>Feel free to contact me at rajatvd@gmail.com!</p>
+
 </div>
 </div>
 </div></section></section>
