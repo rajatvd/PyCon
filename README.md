@@ -10,12 +10,12 @@ To gain a conceptual understanding of how python generators work, and how to use
     * Introduction to standard iteration
     * Iteration using generator functions
         * Infinite series
-    * Generator expressions
+* Generators in practice - data loading in machine learning (~3 min)
 * How do they work? (~7 min)
     * Sending data back into generators
         * Example - Running metric evaluation
     * Stacking generators and the `yield from` statement
         * Example - binary tree traversal
 * A brief foray into async and co-routines (~5 min)
-    * Understanding `yield`
-* Generators in practice - data loading in machine learning (~3 min)
+    * Understanding `yield from`
+    * A simple example of an event loop
