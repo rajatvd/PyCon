@@ -14048,6 +14048,95 @@ Completed task
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Asyncio-in-Python">Asyncio in Python<a class="anchor-link" href="#Asyncio-in-Python">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In python 3.5+ the keywords <code>async</code> and <code>await</code> can be used to explicitly define coroutines. They work using the same principles as the <code>yield from</code> statement.</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>asyncio</code> library also features an event loop, along with some useful async coroutines like sleep and I/O.</p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Example usage of <code>async</code> and <code>await</code>.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">dur</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{name}</span><span class="s2"> s = </span><span class="si">{s}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">dur</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+        
+
+<span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+
+<span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">countdown</span><span class="p">(</span><span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">countdown</span><span class="p">(</span><span class="s2">&quot;five&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+
+<span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">));</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>three s = 3
+five s = 5
+three s = 5
+five s = 9
+three s = 6
+five s = 12
+five s = 14
+five s = 15
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><p>We started off by reformulating iteration using <code>yield</code> - it was a pretty cool way to solve some memory issues, but the <code>yield</code> keyword seemed like just a synctactic trick to make our life easier.</p>
 
 </div>
@@ -14066,16 +14155,7 @@ Completed task
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In python 3.5+ the keywords <code>async</code> and <code>await</code> can be used to explicitly define coroutines. They work using the same principles as the <code>yield from</code> statement.</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>If you're interested, look up stuff on asyncio and the event loop to get a deeper understanding of this part of python! I recommend starting with this <a href="https://www.youtube.com/watch?v=MCs5OvhV9S4">video</a>.</p>
+<p>To get a deeper understanding of the asynchronous side of python, I recommend starting with this <a href="https://www.youtube.com/watch?v=MCs5OvhV9S4">video</a>.</p>
 
 </div>
 </div>
@@ -14084,7 +14164,7 @@ Completed task
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Thanks-for-Listening">Thanks for Listening<a class="anchor-link" href="#Thanks-for-Listening">&#182;</a></h1><p>You can find the code for this talk on my github - <a href="https://github.com/rajatvd">rajatvd</a>. I've included an example using <code>async</code> and <code>await</code> in the code as well, which can be appreciated only when it is run live.</p>
+<h1 id="Thanks-for-Listening">Thanks for Listening<a class="anchor-link" href="#Thanks-for-Listening">&#182;</a></h1><p>You can find the code for this talk on my github - <a href="https://github.com/rajatvd">rajatvd</a>.</p>
 <p>I've hosted the slides for this talk on my <a href="https://rajatvd.github.io/">blog</a> <a href="https://rajatvd.github.io/PySangamam/">here</a>.</p>
 <p>I've put up a bunch of projects on there as well, mainly related to deep learning and math in general.</p>
 <p>Feel free to contact me at rajatvd@gmail.com!</p>
