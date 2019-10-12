@@ -14066,7 +14066,7 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Piplining-Data">Piplining Data<a class="anchor-link" href="#Piplining-Data">&#182;</a></h1>
+<h1 id="Pipelining-Data">Pipelining Data<a class="anchor-link" href="#Pipelining-Data">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -14149,7 +14149,7 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-in-Machine-Learning">Example in Machine Learning<a class="anchor-link" href="#Example-in-Machine-Learning">&#182;</a></h2><p>Image data processing pipeline could look something like this:</p>
+<h2 id="Example-in-Machine-Learning">Example in Machine Learning<a class="anchor-link" href="#Example-in-Machine-Learning">&#182;</a></h2><p>An image processing pipeline could look something like this:</p>
 
 </div>
 </div>
@@ -14157,10 +14157,10 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>whitened = ((whiten(image), label) for image, label in dataset)
-augmented = ((im, label) for image, label in whitened for im in augment(image))
-shuffled = ((image, shuffle(label)) for image, label in augmented)</code></pre>
+<div class="highlight"><pre><span></span><span class="n">whitened</span> <span class="o">=</span> <span class="p">((</span><span class="n">whiten</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">)</span>
+<span class="n">augmented</span> <span class="o">=</span> <span class="p">((</span><span class="n">im</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">whitened</span> <span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="n">augment</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+<span class="n">shuffled</span> <span class="o">=</span> <span class="p">((</span><span class="n">image</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">label</span><span class="p">))</span> <span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">augmented</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -15410,7 +15410,7 @@ Completed task
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In python 3.5+ the keywords <code>async</code> and <code>await</code> can be used to explicitly define coroutines. They work using the same principles as the <code>yield from</code> statement.</p>
+<p>We can use the keywords <code>async</code> and <code>await</code> to explicitly define coroutines. They work using the same principles as the <code>yield from</code> statement.</p>
 
 </div>
 </div>
@@ -15460,7 +15460,7 @@ Completed task
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In python 3.7, the best way to concurrently run multiple coroutines using asyncio is to gather them into a single main entry point:</p>
+<p>In python 3.7, you can concurrently run multiple coroutines by gathering them into a single main entry point:</p>
 
 </div>
 </div>
@@ -15492,52 +15492,11 @@ Completed task
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="k">await</span> <span class="n">main</span><span class="p">(</span><span class="n">async_sleep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># would do asyncio.run(main(async_sleep=True)) in a script</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{time.time()-t:.2f} seconds&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>three s = 3
-five s = 5
-five s = 9
-three s = 5
-five s = 12
-five s = 14
-three s = 6
-five s = 15
-6.01 seconds
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="k">await</span> <span class="n">main</span><span class="p">(</span><span class="n">async_sleep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># would do asyncio.run(main(async_sleep=False)) in a script</span>
+<span class="k">await</span> <span class="n">main</span><span class="p">(</span><span class="n">async_sleep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># asyncio.run(main(async_sleep=False)) in a script</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{time.time()-t:.2f} seconds&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -15564,6 +15523,47 @@ five s = 12
 five s = 14
 five s = 15
 11.02 seconds
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">main</span><span class="p">(</span><span class="n">async_sleep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># asyncio.run(main(async_sleep=True)) in a script</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{time.time()-t:.2f} seconds&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>three s = 3
+five s = 5
+five s = 9
+three s = 5
+five s = 12
+five s = 14
+three s = 6
+five s = 15
+6.01 seconds
 </pre>
 </div>
 </div>
@@ -15623,8 +15623,8 @@ five s = 15
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Thanks-for-Listening">Thanks for Listening<a class="anchor-link" href="#Thanks-for-Listening">&#182;</a></h1><p>You can find the code for this talk on my github - <a href="https://github.com/rajatvd">rajatvd</a>.</p>
-<p>I've hosted the slides for this talk on my <a href="https://rajatvd.github.io/">blog</a> <a href="https://rajatvd.github.io/PySangamam/">here</a>.</p>
-<p>I've put up a bunch of projects on there as well, mainly related to machine learning and math in general.</p>
+<p>Blog - <a href="https://rajatvd.github.io/">rajatvd.github.io</a></p>
+<p>Twitter - @rajat_vd</p>
 <p>Feel free to contact me at rajatvd@gmail.com!</p>
 
 </div>
