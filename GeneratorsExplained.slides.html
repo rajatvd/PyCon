@@ -37,7 +37,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13675,7 +13675,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's walk through what just happened. The first time <code>next(g)</code> was called, control started executing from the beginning of the function. It continues to execute normally until it hits a <code>yield</code>. So, it executed the following statements:</p>
+<p>The first time you call <code>next(g)</code> is when the stuff in the function actually runs, until it hits a <code>yield</code>.</p>
 
 </div>
 </div>
@@ -13694,7 +13694,7 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Once it hits a <code>yield</code>, control stops executing the generator function body. It returns control to where ever <code>next</code> was called, and it also returns the value which was yielded. In this case, the value yielded is 1**2 = 1.</p>
+<p>Once it hits a <code>yield</code>, the function <em>pauses</em> and returns whatever was yielded, in this case 1**2 = 1.</p>
 
 </div>
 </div>
@@ -13702,7 +13702,7 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, the second time <code>next</code> is called, control continues where it left off last time. It also <strong>retains local variables</strong>. This means that <code>i</code> is still equal to <code>1</code>. In order, the statements it executes are:</p>
+<p>The second time you call <code>next(g)</code>, the function contiues from where it left off, and it <strong>retains local variables</strong>.</p>
 
 </div>
 </div>
@@ -13711,7 +13711,7 @@ while True:
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><code>i+=1</code> <code>i</code> is now 2. Now, control is at the end of the while loop body, so it loops back to the beginning.</li>
+<li><code>i+=1</code> <code>i</code> is now 2. It hits the end of the infinte while loop and goes back to the <code>yield</code> statement.</li>
 </ul>
 
 </div>
@@ -13721,7 +13721,7 @@ while True:
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><code>yield i**2</code> Encounters a <code>yield</code>, so it stops executing. Value yielded is 2**2 = 4.</li>
+<li><code>yield i**2</code> Encounters a <code>yield</code>, so it stops executing. The value yielded is 2**2 = 4.</li>
 </ul>
 
 </div>
@@ -13738,7 +13738,7 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that this generator will always encounter a yield statement as it is embedded in an infinite loop. What happens if we write a generator which doesn't have infinite yields?</p>
+<p>What about finite <code>yield</code>s?</p>
 
 </div>
 </div>
@@ -14168,9 +14168,8 @@ while True:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>This style of code is very readable compared to writing loops and is in fact <strong>faster</strong> too.</li>
-</ul>
+<div class="highlight"><pre><span></span><span class="n">process</span><span class="p">(</span><span class="n">shuffled</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -14180,6 +14179,16 @@ while True:
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Nowhere did we store big lists of data, each single item was pipelined through the different generators one at a time.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>This style of code is very readable compared to writing loops and is in fact <strong>faster</strong> too.</li>
 </ul>
 
 </div>
@@ -15183,7 +15192,7 @@ e
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The above example showed that <code>yield from</code> expands generators within other generators and allows us to stack them. However, the <code>yield from</code> statement is much more that just a for loop.</p>
+<p><code>yield from</code> is more than just a for loop expansion.</p>
 
 </div>
 </div>
